@@ -72,9 +72,9 @@ public class ToDoApp {
         System.out.println("Enter the Task Number that you need to delete:");
         if(scanner.hasNextInt()){
             int taskNo=scanner.nextInt();
+            scanner.nextLine(); 
             if(taskNo<=0 || taskNo>=tasks.size()){
                 System.out.println("Error : Enter a valid Task Number. Please enter Number 1 to "+tasks.size()+".");
-                return;
             }
             else{
                 tasks.remove(taskNo-1);
@@ -83,6 +83,7 @@ public class ToDoApp {
         }
         else{
             System.out.println("Error: Invalid Input. Please enter a Number.");
+            scanner.nextLine(); 
         }
     }
 }
