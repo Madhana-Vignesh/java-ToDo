@@ -3,14 +3,17 @@ import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
-public class Main {
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+public class ToDoApp {
   
     private static ArrayList<String> tasks = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         System.out.println("--- Welcome to Your CLI To-Do List ---");
-
+        loadTask();
         while (true) {
             displayMenu(); 
             String choice = scanner.nextLine(); 
@@ -72,11 +75,11 @@ public class Main {
         return;
         }
         viewTask();
-        System.out.println("Enter the Task Number that you need to delete:");
+        System.out.print("Enter the Task Number that you need to delete: ");
         if(scanner.hasNextInt()){
             int taskNo=scanner.nextInt();
             scanner.nextLine(); 
-            if(taskNo<=0 || taskNo>=tasks.size()){
+            if(taskNo<=0 || taskNo>tasks.size()){
                 System.out.println("Error : Enter a valid Task Number. Please enter Number 1 to "+tasks.size()+".");
             }
             else{
@@ -87,6 +90,33 @@ public class Main {
         else{
             System.out.println("Error: Invalid Input. Please enter a Number.");
             scanner.nextLine(); 
+        }
+      
+    }
+    private static void saveTask(){
+        try(PrintWriter write = new PrintWriter(new FileWriter("todo.txt"))){
+            for(String task: tasks){
+                write.println(task);
+            }
+            System.out.println("All tasks have been saved to todo.txt");
+        }
+        catch(IOException e){
+            System.err.print("Error on saving tasks: "+e.getMessage());
+        }
+    }
+    private static void loadTask(){
+        try(BufferedReader read = new BufferedReader(new FileReader("todo.txt"))){
+            String line;
+            while((line=read.readLine()) != null){
+                tasks.add(line);
+            }
+            System.out.println(tasks.size()+" tasks are loaded from file.");
+        }
+        catch(FileNotFoundException e){
+            System.out.println("No previous task file found. Starting fresh...");
+        }
+        catch(IOException e){
+            System.err.print("Error on loading tasks: "+e.getMessage());
         }
     }
 }
