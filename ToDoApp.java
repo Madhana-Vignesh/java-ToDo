@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
-public class ToDoApp {
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
+public class Main {
   
     private static ArrayList<String> tasks = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
@@ -38,6 +40,7 @@ public class ToDoApp {
             break;
         case "4": 
             System.out.println("Goodbye! Tasks saved successfully (not really, but soon!).");
+            saveTask();
             scanner.close();
             System.exit(0); 
         default:
