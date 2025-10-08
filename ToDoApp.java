@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -6,6 +7,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
+=======
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+>>>>>>> d57b57b633705ef2cb27f3a49b4d71ab41877b5f
 public class ToDoApp {
   
     private static ArrayList<String> tasks = new ArrayList<>();
@@ -29,6 +40,10 @@ public class ToDoApp {
         System.out.println("4. Exit");
         System.out.print("Enter your choice (1-4): ");
     }
+<<<<<<< HEAD
+=======
+  
+>>>>>>> d57b57b633705ef2cb27f3a49b4d71ab41877b5f
     private static void processChoice(String choice) {
       switch(choice){
         case "1":
@@ -51,6 +66,7 @@ public class ToDoApp {
       }
     }
     private static void viewTask(){
+<<<<<<< HEAD
         if(tasks.isEmpty()){
             System.out.println("Your ToDo List is Empty.");
         }else{
@@ -63,6 +79,15 @@ public class ToDoApp {
         }
     }
     
+=======
+        System.out.println("Your To-Do List :");
+        int i=1;
+        for(String task:tasks){
+            System.out.println(i+" "+task);
+            i++;
+        }
+    }
+>>>>>>> d57b57b633705ef2cb27f3a49b4d71ab41877b5f
     private static void addTask(){
         System.out.println("Enter Task Description:");
         String description=scanner.nextLine();
@@ -123,4 +148,8 @@ public class ToDoApp {
             System.err.print("Error on loading tasks: "+e.getMessage());
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d57b57b633705ef2cb27f3a49b4d71ab41877b5f
